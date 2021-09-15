@@ -9,12 +9,12 @@ node {
 
     stage('Build image') {
 	    
-       sh('docker build -t codagott/node-app:2.0 .')
+       sh('docker build -t 88337744666/node-app:2.0 .')
     }
 
     stage('Login into Docker Hub') {
 	    
-        sh('docker login -u codagott -p mP3UzdZ8v7cqgEZ')
+        sh('docker login -u 88337744666 -p semicolon11')
     }
 
     stage('Push image') {
@@ -26,6 +26,12 @@ node {
 //             app.push("latest")
 //             } 
 //                 echo "Trying to Push Docker Build to DockerHub"
-	    sh('docker push codagott/node-app:2.0')
+	    sh('docker push 88337744666/node-app:2.0')
     }
+	
+    stage('Deploy Node-app Container ') {
+	    
+        sh('docker run -d -p 8000:8000 88337744666/node-app:2.0')
+    }
+
 }
